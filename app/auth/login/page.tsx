@@ -51,12 +51,11 @@ export default function LoginPage() {
     setError(null)
 
     try {
-      // Use production URL for OAuth redirect
-      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://neurotrack-xi.vercel.app'
+      // Always use current origin for OAuth redirect to maintain PKCE flow
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${siteUrl}/auth/callback`,
+          redirectTo: `${window.location.origin}/auth/callback`,
         },
       })
       if (error) throw error
