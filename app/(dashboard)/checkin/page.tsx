@@ -43,12 +43,9 @@ export default function CheckinPage() {
     e.preventDefault()
     
     if (!user) {
-      console.error('[v0] No user found - cannot save checkin')
       toast.error('You must be logged in to save a check-in')
       return
     }
-    
-    console.log('[v0] User authenticated:', user.id, user.email)
 
     setIsSubmitting(true)
     try {
@@ -70,7 +67,6 @@ export default function CheckinPage() {
       toast.success('Check-in completed successfully!')
     } catch (error: unknown) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error'
-      console.error('[v0] Checkin submission error:', errorMessage)
       toast.error(`Failed to save check-in: ${errorMessage}`)
     } finally {
       setIsSubmitting(false)
@@ -87,9 +83,14 @@ export default function CheckinPage() {
         <p className="text-muted-foreground mb-6">
           {"Great job tracking your health today. Keep up the good work!"}
         </p>
-        <Button onClick={() => setSubmitted(false)}>
-          Update Check-in
-        </Button>
+        <div className="flex gap-3">
+          <Button onClick={() => setSubmitted(false)}>
+            Add Another Check-in
+          </Button>
+          <Button variant="outline" onClick={() => window.location.href = '/'}>
+            Go to Dashboard
+          </Button>
+        </div>
       </div>
     )
   }
