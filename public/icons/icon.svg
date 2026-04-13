@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="96" fill="#f0fdfa"/>
+  <g transform="translate(56, 56)">
+    <!-- Brain outline -->
+    <path d="M200 40c-44.2 0-80 35.8-80 80 0 8.8-7.2 16-16 16-35.3 0-64 28.7-64 64 0 17.7 7.2 33.7 18.8 45.3C47.2 257.9 40 276.2 40 296c0 35.3 28.7 64 64 64 8.8 0 16 7.2 16 16 0 44.2 35.8 80 80 80s80-35.8 80-80c0-8.8 7.2-16 16-16 35.3 0 64-28.7 64-64 0-19.8-7.2-38.1-18.8-50.7C352.8 233.7 360 217.7 360 200c0-35.3-28.7-64-64-64-8.8 0-16-7.2-16-16 0-44.2-35.8-80-80-80z" fill="#14B8A6" fill-opacity="0.15" stroke="#14B8A6" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Neural connections -->
+    <circle cx="140" cy="200" r="12" fill="#14B8A6"/>
+    <circle cx="200" cy="140" r="12" fill="#14B8A6"/>
+    <circle cx="260" cy="200" r="12" fill="#14B8A6"/>
+    <circle cx="200" cy="260" r="12" fill="#14B8A6"/>
+    <circle cx="200" cy="200" r="16" fill="#0d9488"/>
+    <line x1="156" y1="200" x2="184" y2="200" stroke="#14B8A6" stroke-width="6" stroke-linecap="round"/>
+    <line x1="216" y1="200" x2="244" y2="200" stroke="#14B8A6" stroke-width="6" stroke-linecap="round"/>
+    <line x1="200" y1="156" x2="200" y2="184" stroke="#14B8A6" stroke-width="6" stroke-linecap="round"/>
+    <line x1="200" y1="216" x2="200" y2="244" stroke="#14B8A6" stroke-width="6" stroke-linecap="round"/>
+    <!-- Pulse line -->
+    <path d="M60 320 L120 320 L140 280 L160 360 L180 300 L200 340 L220 320 L340 320" stroke="#14B8A6" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+</svg>
