@@ -41,7 +41,14 @@ export default function CheckinPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!user) return
+    
+    if (!user) {
+      console.error('[v0] No user found - cannot save checkin')
+      toast.error('You must be logged in to save a check-in')
+      return
+    }
+    
+    console.log('[v0] User authenticated:', user.id, user.email)
 
     setIsSubmitting(true)
     try {
@@ -61,9 +68,10 @@ export default function CheckinPage() {
       
       setSubmitted(true)
       toast.success('Check-in completed successfully!')
-    } catch (error) {
-      toast.error('Failed to save check-in. Please try again.')
-      console.error(error)
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      console.error('[v0] Checkin submission error:', errorMessage)
+      toast.error(`Failed to save check-in: ${errorMessage}`)
     } finally {
       setIsSubmitting(false)
     }
