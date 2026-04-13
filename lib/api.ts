@@ -154,12 +154,9 @@ export async function createCheckin(
   const supabase = createClient()
   const today = new Date().toISOString().split('T')[0]
 
-  console.log('[v0] Creating checkin for user:', userId, 'date:', today)
-  console.log('[v0] Checkin data:', data)
-
   const { data: result, error } = await supabase
     .from('daily_checkins')
-    .upsert({
+    .insert({
       ...data,
       user_id: userId,
       date: today,
@@ -167,12 +164,7 @@ export async function createCheckin(
     .select()
     .single()
 
-  if (error) {
-    console.error('[v0] Checkin error:', error.message, error.code, error.details)
-    throw error
-  }
-  
-  console.log('[v0] Checkin saved successfully:', result)
+  if (error) throw error
   return result
 }
 
@@ -181,9 +173,6 @@ export async function createSeizureEvent(
   data: Partial<Database['public']['Tables']['seizure_events']['Insert']>
 ) {
   const supabase = createClient()
-
-  console.log('[v0] Creating seizure event for user:', userId)
-  console.log('[v0] Seizure data:', data)
 
   const { data: result, error } = await supabase
     .from('seizure_events')
@@ -195,12 +184,7 @@ export async function createSeizureEvent(
     .select()
     .single()
 
-  if (error) {
-    console.error('[v0] Seizure event error:', error.message, error.code, error.details)
-    throw error
-  }
-  
-  console.log('[v0] Seizure event saved successfully:', result)
+  if (error) throw error
   return result
 }
 
