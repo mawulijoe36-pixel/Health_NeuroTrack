@@ -28,8 +28,10 @@ export default function ForgotPasswordPage() {
     setError(null)
 
     try {
+      // Use production URL for password reset redirect
+      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://neurotrack-xi.vercel.app'
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${window.location.origin}/auth/reset-password`,
+        redirectTo: `${siteUrl}/auth/reset-password`,
       })
       if (error) throw error
       setSuccess(true)
