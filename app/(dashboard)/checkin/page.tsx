@@ -39,7 +39,19 @@ export default function CheckinPage() {
     notes: '',
   })
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleReset = () => {
+    setFormData({
+      mood: '',
+      sleepHours: 7,
+      sleepQuality: 3,
+      energyLevel: 3,
+      stressLevel: 2,
+      waterIntake: 8,
+      medicationTaken: true,
+      notes: '',
+    })
+    setSubmitted(false)
+  }
     e.preventDefault()
     
     if (!user) {
@@ -84,7 +96,7 @@ export default function CheckinPage() {
           {"Great job tracking your health today. Keep up the good work!"}
         </p>
         <div className="flex gap-3">
-          <Button onClick={() => setSubmitted(false)}>
+          <Button onClick={handleReset}>
             Add Another Check-in
           </Button>
           <Button variant="outline" onClick={() => window.location.href = '/'}>
