@@ -66,8 +66,6 @@ export default function SeizureLogPage() {
 
     setIsSubmitting(true)
     try {
-      console.log('[v0] Submitting seizure event:', { userId: user.id, formData })
-      
       await createSeizureEvent(user.id, {
         seizure_type: formData.seizureType || null,
         duration_minutes: formData.duration ? parseInt(formData.duration) : null,
@@ -76,8 +74,6 @@ export default function SeizureLogPage() {
         warning_signs: formData.warningSignals ? formData.warningSignals.split(',').map(s => s.trim()) : null,
         notes: formData.notes || null,
       })
-      
-      console.log('[v0] Seizure event created successfully')
       
       queryClient.invalidateQueries({ queryKey: ['seizures'] })
       queryClient.invalidateQueries({ queryKey: ['dashboard'] })
@@ -95,7 +91,6 @@ export default function SeizureLogPage() {
       toast.success('Seizure event logged successfully')
     } catch (error: unknown) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error'
-      console.error('[v0] Seizure event error:', errorMessage, error)
       toast.error(`Failed to log seizure event: ${errorMessage}`)
     } finally {
       setIsSubmitting(false)
