@@ -52,6 +52,8 @@ export default function CheckinPage() {
     })
     setSubmitted(false)
   }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
     if (!user) {
@@ -88,8 +90,8 @@ export default function CheckinPage() {
   if (submitted) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-success/10 mb-4">
-          <CheckCircle className="h-8 w-8 text-success" />
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 mb-4">
+          <CheckCircle className="h-8 w-8 text-green-600" />
         </div>
         <h1 className="text-2xl font-bold mb-2">Check-in Complete!</h1>
         <p className="text-muted-foreground mb-6">
