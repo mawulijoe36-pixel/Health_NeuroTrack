@@ -174,6 +174,8 @@ export async function createSeizureEvent(
 ) {
   const supabase = createClient()
 
+  console.log('[v0] Creating seizure event for user:', userId, 'with data:', data)
+
   const { data: result, error } = await supabase
     .from('seizure_events')
     .insert({
@@ -184,7 +186,17 @@ export async function createSeizureEvent(
     .select()
     .single()
 
-  if (error) throw error
+  if (error) {
+    console.error('[v0] Seizure event error:', {
+      message: error.message,
+      code: error.code,
+      details: error.details,
+      hint: error.hint,
+    })
+    throw new Error(error.message || 'Failed to create seizure event')
+  }
+  
+  console.log('[v0] Seizure event created:', result)
   return result
 }
 
