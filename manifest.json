@@ -1,0 +1,73 @@
+{
+  "background_color": "#ffffff",
+  "description": "Track seizures, symptoms, and lifestyle factors to identify patterns and manage epilepsy proactively.",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "NeuroTrack - Epilepsy Symptom Tracker",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "NeuroTrack - Epilepsy Symptom Tracker",
+  "start_url": "https://v0-neurotrack.vercel.app",
+  "theme_color": "#14B8A6",
+  "icons": [
+    {
+      "src": "https://v0-neurotrack.vercel.app/icon-light-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32",
+      "isSquare": true,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 32,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    },
+    {
+      "src": "https://v0-neurotrack.vercel.app/icon-dark-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32",
+      "isSquare": true,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 32,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    },
+    {
+      "src": "https://v0-neurotrack.vercel.app/icon.svg",
+      "type": "image/svg+xml",
+      "isSquare": false,
+      "isPng": false,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 0,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    },
+    {
+      "src": "https://v0-neurotrack.vercel.app/apple-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "isSquare": true,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 180,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    }
+  ],
+  "id": "NeuroTrack",
+  "lang": "en",
+  "display_override": [
+    "window-controls-overlay"
+  ],
+  "categories": [
+    "health"
+  ]
+}
