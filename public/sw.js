@@ -1,4 +1,5 @@
 const CACHE_NAME = 'neurotrack-v1';
+const OFFLINE_PAGE = '/offline.html';
 const STATIC_ASSETS = [
   '/',
   '/checkin',
@@ -7,6 +8,9 @@ const STATIC_ASSETS = [
   '/settings',
   '/auth/login',
   '/manifest.json',
+  '/offline.html',
+  '/icons/icon-192x192.png',
+  '/icons/icon-512x512.png',
 ];
 
 // Install event - cache static assets
@@ -62,7 +66,7 @@ self.addEventListener('fetch', (event) => {
           }
           // Return offline page for navigation requests
           if (event.request.mode === 'navigate') {
-            return caches.match('/');
+            return caches.match(OFFLINE_PAGE);
           }
           return new Response('Offline', { status: 503 });
         });
