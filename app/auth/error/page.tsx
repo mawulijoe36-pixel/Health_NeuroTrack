@@ -1,7 +1,37 @@
+'use client'
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Activity, AlertTriangle } from 'lucide-react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
+
+function ErrorContent() {
+  const searchParams = useSearchParams()
+  const message = searchParams.get('message')
+  
+  return (
+    <Card>
+      <CardHeader className="text-center">
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
+          <AlertTriangle className="h-8 w-8 text-destructive" />
+        </div>
+        <CardTitle className="text-2xl">Authentication Error</CardTitle>
+        <CardDescription>
+          {message || 'Something went wrong during authentication. Please try again.'}
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="flex justify-center">
+        <Button asChild>
+          <Link href="/auth/login">
+            Back to sign in
+          </Link>
+        </Button>
+      </CardContent>
+    </Card>
+  )
+}
 
 export default function AuthErrorPage() {
   return (
@@ -17,24 +47,9 @@ export default function AuthErrorPage() {
             </div>
           </div>
           
-          <Card>
-            <CardHeader className="text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
-                <AlertTriangle className="h-8 w-8 text-destructive" />
-              </div>
-              <CardTitle className="text-2xl">Authentication Error</CardTitle>
-              <CardDescription>
-                Something went wrong during authentication. Please try again.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex justify-center">
-              <Button asChild>
-                <Link href="/auth/login">
-                  Back to sign in
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ErrorContent />
+          </Suspense>
         </div>
       </div>
     </div>
