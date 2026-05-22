@@ -1,6 +1,6 @@
 # Health_NeuroTrack
 
-A Progressive Web App (PWA) developed by Christian Joel Kwame Donkoh, currently serving over 6,000 users.
+A Progressive Web App (PWA) developed by Christian Joel Kwame Donkog, currently serving over 6,000 users in 2024/25.
 
 ## About
 
@@ -40,4 +40,5 @@ To learn more about the technologies used in this project:
 
 ## Author
 
-**Christian Joel Kwame Donkoh**
+**Christian Joel Kwame Donkoh** 
+**First Date of deployment; 2nd March,2022**
