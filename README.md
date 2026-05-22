@@ -1,12 +1,19 @@
 # Health_NeuroTrack
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+A Progressive Web App (PWA) developed by Christian Joel Kwame Donkoh, currently serving over 6,000 users.
 
-## Built with v0
+## About
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+Health_NeuroTrack is designed to provide a modern and responsive platform for monitoring and managing neuro-related health data. Built with Next.js, the platform delivers a scalable and user-friendly experience while supporting accessibility, performance, and future growth.
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_GNCOTjMSiO8ue2dTCGIxH2pzuKHq)
+## Features
+
+- Progressive Web App (PWA) support
+- Responsive and modern user interface
+- Real-time and scalable architecture
+- Cross-device compatibility
+- Optimized performance for web and mobile usage
+- Serving a growing community of over 6,000 users
 
 ## Getting Started
 
@@ -20,16 +27,17 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `app/page.tsx`. Changes will automatically update in development mode.
 
 ## Learn More
 
-To learn more, take a look at the following resources:
+To learn more about the technologies used in this project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+- Next.js Documentation: https://nextjs.org/docs
+- Learn Next.js: https://nextjs.org/learn
 
-<a href="https://v0.app/chat/api/kiro/clone/mawulijoe36-pixel/Health_NeuroTrack" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
+## Author
+
+**Christian Joel Kwame Donkoh**
