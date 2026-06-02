@@ -156,7 +156,7 @@ export async function createCheckin(
 
   const { data: result, error } = await supabase
     .from('daily_checkins')
-    .upsert({
+    .insert({
       ...data,
       user_id: userId,
       date: today,
@@ -174,17 +174,29 @@ export async function createSeizureEvent(
 ) {
   const supabase = createClient()
 
+  const today = new Date().toISOString().split('T')[0]
+
   const { data: result, error } = await supabase
     .from('seizure_events')
     .insert({
       ...data,
       user_id: userId,
+      date: today,
       started_at: data.started_at ?? new Date().toISOString(),
     })
     .select()
     .single()
 
-  if (error) throw error
+  if (error) {
+    console.error('[v0] Seizure event error:', {
+      message: error.message,
+      code: error.code,
+      details: error.details,
+      hint: error.hint,
+    })
+    throw new Error(error.message || 'Failed to create seizure event')
+  }
+  
   return result
 }
 
@@ -198,7 +210,15 @@ export async function fetchSeizureEvents(userId: string, limit = 50) {
     .order('started_at', { ascending: false })
     .limit(limit)
 
-  if (error) throw error
+  if (error) {
+    console.error('[v0] Fetch seizure events error:', {
+      message: error.message,
+      code: error.code,
+      details: error.details,
+      hint: error.hint,
+    })
+    throw error
+  }
   return data
 }
 

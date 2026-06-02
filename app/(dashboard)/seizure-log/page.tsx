@@ -59,7 +59,10 @@ export default function SeizureLogPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!user) return
+    if (!user) {
+      toast.error('You must be logged in')
+      return
+    }
 
     setIsSubmitting(true)
     try {
@@ -86,9 +89,9 @@ export default function SeizureLogPage() {
         notes: '',
       })
       toast.success('Seizure event logged successfully')
-    } catch (error) {
-      toast.error('Failed to log seizure event')
-      console.error(error)
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      toast.error(`Failed to log seizure event: ${errorMessage}`)
     } finally {
       setIsSubmitting(false)
     }

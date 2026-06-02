@@ -19,7 +19,7 @@ function getGreeting(): string {
 }
 
 export default function DashboardPage() {
-  const { user } = useAuth()
+  const { user, firstName } = useAuth()
 
   const { data, isLoading } = useQuery({
     queryKey: ['dashboard', user?.id],
@@ -55,7 +55,7 @@ export default function DashboardPage() {
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">
-            {getGreeting()}
+            {getGreeting()}{firstName ? `, ${firstName}` : ''}
           </h1>
           <p className="text-muted-foreground">
             {"Here's your health overview"}

@@ -17,6 +17,7 @@ import { useState } from 'react'
 import { Activity, Loader2 } from 'lucide-react'
 
 export default function SignUpPage() {
+  const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -29,6 +30,12 @@ export default function SignUpPage() {
     const supabase = createClient()
     setIsLoading(true)
     setError(null)
+
+    if (!firstName.trim()) {
+      setError('Please enter your first name')
+      setIsLoading(false)
+      return
+    }
 
     if (password !== confirmPassword) {
       setError('Passwords do not match')
@@ -43,13 +50,16 @@ export default function SignUpPage() {
     }
 
     try {
+      // Use production URL for email redirect
+      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://neurotrack-xi.vercel.app'
       const { error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo:
-            process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL ??
-            `${window.location.origin}/auth/callback`,
+          emailRedirectTo: `${siteUrl}/auth/callback`,
+          data: {
+            full_name: firstName,
+          },
         },
       })
       if (error) throw error
@@ -85,6 +95,17 @@ export default function SignUpPage() {
             <CardContent>
               <form onSubmit={handleSignUp}>
                 <div className="flex flex-col gap-4">
+                  <div className="grid gap-2">
+                    <Label htmlFor="firstName">First Name</Label>
+                    <Input
+                      id="firstName"
+                      type="text"
+                      placeholder="John"
+                      required
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                    />
+                  </div>
                   <div className="grid gap-2">
                     <Label htmlFor="email">Email</Label>
                     <Input

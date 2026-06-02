@@ -39,9 +39,27 @@ export default function CheckinPage() {
     notes: '',
   })
 
+  const handleReset = () => {
+    setFormData({
+      mood: '',
+      sleepHours: 7,
+      sleepQuality: 3,
+      energyLevel: 3,
+      stressLevel: 2,
+      waterIntake: 8,
+      medicationTaken: true,
+      notes: '',
+    })
+    setSubmitted(false)
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!user) return
+    
+    if (!user) {
+      toast.error('You must be logged in to save a check-in')
+      return
+    }
 
     setIsSubmitting(true)
     try {
@@ -61,9 +79,9 @@ export default function CheckinPage() {
       
       setSubmitted(true)
       toast.success('Check-in completed successfully!')
-    } catch (error) {
-      toast.error('Failed to save check-in. Please try again.')
-      console.error(error)
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      toast.error(`Failed to save check-in: ${errorMessage}`)
     } finally {
       setIsSubmitting(false)
     }
@@ -72,16 +90,21 @@ export default function CheckinPage() {
   if (submitted) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-success/10 mb-4">
-          <CheckCircle className="h-8 w-8 text-success" />
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 mb-4">
+          <CheckCircle className="h-8 w-8 text-green-600" />
         </div>
         <h1 className="text-2xl font-bold mb-2">Check-in Complete!</h1>
         <p className="text-muted-foreground mb-6">
           {"Great job tracking your health today. Keep up the good work!"}
         </p>
-        <Button onClick={() => setSubmitted(false)}>
-          Update Check-in
-        </Button>
+        <div className="flex gap-3">
+          <Button onClick={handleReset}>
+            Add Another Check-in
+          </Button>
+          <Button variant="outline" onClick={() => window.location.href = '/'}>
+            Go to Dashboard
+          </Button>
+        </div>
       </div>
     )
   }

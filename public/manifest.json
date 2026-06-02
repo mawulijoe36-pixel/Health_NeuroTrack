@@ -1,0 +1,73 @@
+{
+  "id": "com.neurotrack.app",
+  "name": "NeuroTrack - Epilepsy Symptom Tracker",
+  "short_name": "NeuroTrack",
+  "description": "Track seizures, symptoms, and lifestyle factors to identify patterns and manage epilepsy proactively.",
+  "start_url": "https://neurotrack-xi.vercel.app/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#14B8A6",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["health", "medical", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "form_factor": "narrow",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "form_factor": "wide",
+      "type": "image/jpeg"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Daily Check-in",
+      "short_name": "Check-in",
+      "description": "Log your daily health check-in",
+      "url": "/checkin",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/jpeg",
+          "purpose": "any"
+        }
+      ]
+    },
+    {
+      "name": "Log Seizure",
+      "short_name": "Log",
+      "description": "Record a seizure event",
+      "url": "/seizure-log",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/jpeg",
+          "purpose": "any"
+        }
+      ]
+    }
+  ]
+}
